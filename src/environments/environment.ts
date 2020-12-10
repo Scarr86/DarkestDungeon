@@ -3,7 +3,16 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  firebase: {
+    apiKey: 'AIzaSyDld_PcYi1b_m1bWSnQQzas8v1IqJV9Omo',
+    authDomain: 'darkest-dungeon-56880.firebaseapp.com',
+    databaseURL: 'https://darkest-dungeon-56880-default-rtdb.firebaseio.com',
+    projectId: 'darkest-dungeon-56880',
+    storageBucket: 'darkest-dungeon-56880.appspot.com',
+    messagingSenderId: '885547719130',
+    appId: '1:885547719130:web:3f9424bdfa0bd6090a88e3',
+  },
 };
 
 /*

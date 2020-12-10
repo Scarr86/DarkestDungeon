@@ -1,0 +1,29 @@
+<form>
+  <mat-form-field>
+    <input #newitem matInput value="Sushi" />
+    <button (click)="addItem(newitem.value)" mat-icon-button matSuffix>
+      <mat-icon> add </mat-icon>
+    </button>
+    <button (click)="deleteEverything()" mat-icon-button matSuffix>
+      <mat-icon> delete_forever </mat-icon>
+    </button>
+  </mat-form-field>
+</form>
+
+<mat-list>
+  <mat-list-item *ngFor="let item of heroes.items | async">
+    <mat-form-field>
+      <input matInput #updatetext [value]="item.name" />
+      <button
+        (click)="updateItem(item.key, updatetext.value)"
+        mat-icon-button
+        matSuffix
+      >
+        <mat-icon> upgrade </mat-icon>
+      </button>
+      <button (click)="deleteItem(item.key)" mat-icon-button matSuffix>
+        <mat-icon> delete </mat-icon>
+      </button>
+    </mat-form-field>
+  </mat-list-item>
+</mat-list>

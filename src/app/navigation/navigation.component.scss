@@ -1,0 +1,23 @@
+@import "~@angular/material/theming";
+@import "../../styles.scss";
+
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: 200px;
+}
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.img {
+  height: 100%;
+}
+
+.active {
+  background-color: mat-color($background, hover) !important;
+}
