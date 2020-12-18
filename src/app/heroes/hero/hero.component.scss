@@ -1,0 +1,44 @@
+.mat-form-field {
+  width: 100%;
+}
+
+.hero {
+  display: flex;
+  flex-wrap: wrap;
+
+  &__fied {
+    width: 100%;
+  }
+
+  &__box {
+    display: flex;
+    align-items: flex-end;
+    flex-wrap: wrap-reverse;
+  }
+
+  &__form {
+    flex-grow: 1;
+  }
+
+  &__img {
+    margin-left: 40px;
+  }
+
+  &__skills {
+    flex-grow: 1;
+  }
+
+  &__skills-box {
+    display: flex;
+    align-items: center;
+    img {
+      width: 75px;
+      height: 75px;
+      margin: 0 40px;
+    }
+  }
+
+  &__skills-input {
+    flex-grow: 1;
+  }
+}

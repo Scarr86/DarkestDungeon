@@ -1,0 +1,75 @@
+<!-- <pre>
+{{heroForm.value | json}}
+</pre> -->
+
+
+<div class="hero">
+    <fieldset class="hero__fied">
+        <legend>Герой</legend>
+        <div class="hero__box">
+            <form class="hero__form" [formGroup]='heroForm'>
+                <mat-form-field>
+                    <input formControlName="name" matInput placeholder="Имя" />
+                </mat-form-field>
+                <mat-form-field>
+                    <input formControlName="img" matInput placeholder="Ссылка на картинку" />
+                </mat-form-field>
+                <mat-form-field>
+                    <input formControlName="wiki" matInput placeholder="Ссылка на wiki" />
+                </mat-form-field>
+            </form>
+            <div class="hero__img">
+                <img src="{{img}}" alt="hero">
+                <mat-chip-list>
+                    <mat-chip [disabled]='!wiki'>
+                        <a href="{{wiki}}" target="_blank">Wiki</a>
+                    </mat-chip>
+                </mat-chip-list>
+            </div>
+        </div>
+    </fieldset>
+
+    <fieldset class="hero__skills">
+        <legend>Навыки</legend>
+        <form [formGroup]='heroForm'>
+            <ng-container formArrayName="heroSkills">
+                <ng-container *ngFor="let skill of heroSkills.controls; let i = index; let isLast = last">
+                    <div class="hero__skills-box" [formGroupName]="i">
+                        <img src="{{skill.value['img']}}" alt="hero">
+                        <div class="hero__skills-input">
+                            <mat-form-field>
+                                <input formControlName="name" matInput placeholder="Имя" />
+                            </mat-form-field>
+                            <mat-form-field>
+                                <input formControlName="img" matInput placeholder="Ссылка на картинку" />
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <mat-divider *ngIf="!isLast"></mat-divider>
+                </ng-container>
+            </ng-container>
+        </form>
+    </fieldset>
+
+    <fieldset class="hero__skills">
+        <legend>Лагерные Навыки</legend>
+        <form [formGroup]='heroForm'>
+            <ng-container formArrayName="campSkills">
+                <ng-container *ngFor="let skill of campSkills.controls; let i = index; let isLast = last">
+                    <div class="hero__skills-box" [formGroupName]="i">
+                        <img src="{{skill.value['img']}}" alt="hero">
+                        <div class="hero__skills-input">
+                            <mat-form-field>
+                                <input formControlName="name" matInput placeholder="Имя" />
+                            </mat-form-field>
+                            <mat-form-field>
+                                <input formControlName="img" matInput placeholder="Ссылка на картинку" />
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <mat-divider *ngIf="!isLast"></mat-divider>
+                </ng-container>
+            </ng-container>
+        </form>
+    </fieldset>
+</div>

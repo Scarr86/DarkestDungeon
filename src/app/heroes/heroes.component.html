@@ -1,29 +1,32 @@
-<form>
-  <mat-form-field>
-    <input #newitem matInput value="Sushi" />
-    <button (click)="addItem(newitem.value)" mat-icon-button matSuffix>
-      <mat-icon> add </mat-icon>
+<ng-container *ngIf="selectHero; else heroList">
+  <mat-toolbar>
+    <button mat-icon-button (click)="save()">
+      <mat-icon>
+        save
+      </mat-icon>
     </button>
-    <button (click)="deleteEverything()" mat-icon-button matSuffix>
-      <mat-icon> delete_forever </mat-icon>
+    <button mat-icon-button (click)="selectHero = null">
+      <mat-icon>
+        clear
+      </mat-icon>
     </button>
-  </mat-form-field>
-</form>
+    <button mat-icon-button (click)="delete()" [disabled]=" selectHero?.key ? 'false' : 'true'">
+      <mat-icon>
+        delete
+      </mat-icon>
+    </button>
+  </mat-toolbar>
+  <app-hero [(hero)]="selectHero"></app-hero>
+</ng-container>
 
-<mat-list>
-  <mat-list-item *ngFor="let item of heroes.items | async">
-    <mat-form-field>
-      <input matInput #updatetext [value]="item.name" />
-      <button
-        (click)="updateItem(item.key, updatetext.value)"
-        mat-icon-button
-        matSuffix
-      >
-        <mat-icon> upgrade </mat-icon>
+<ng-template #heroList>
+  <fieldset>
+    <legend>Список Героев</legend>
+    <div class="hero-list">
+      <app-heroes-list [heroes]=' heroes.items | async' (selected)="selected($event)"></app-heroes-list>
+      <button mat-button (click)="newHero()">
+        <mat-icon>add</mat-icon>
       </button>
-      <button (click)="deleteItem(item.key)" mat-icon-button matSuffix>
-        <mat-icon> delete </mat-icon>
-      </button>
-    </mat-form-field>
-  </mat-list-item>
-</mat-list>
+    </div>
+  </fieldset>
+</ng-template>

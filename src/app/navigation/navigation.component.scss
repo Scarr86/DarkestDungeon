@@ -21,3 +21,10 @@
 .active {
   background-color: mat-color($background, hover) !important;
 }
+
+.layout {
+  display: flex;
+}
+.w-100 {
+  width: 100%;
+}

@@ -1,0 +1,5 @@
+<div *ngFor="let hero of heroes; let i = index" class="hero" (click)="select(hero)">
+    <span>{{i+1}}</span>
+    <img class="hero-img" src="{{hero.img}}" alt="hero">
+    <span>{{hero.name}}</span>
+</div>

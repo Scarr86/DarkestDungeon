@@ -13,6 +13,24 @@ export const environment = {
     messagingSenderId: '885547719130',
     appId: '1:885547719130:web:3f9424bdfa0bd6090a88e3',
   },
+  heroes: [
+    {
+      id: 11,
+      name: 'Антиквар',
+      wiki:
+        'https://darkestdungeon.fandom.com/ru/wiki/%D0%90%D0%BD%D1%82%D0%B8%D0%BA%D0%B2%D0%B0%D1%80',
+      skills: [
+        { id: 11, name: 'Робкий выпад' },
+        { id: 12, name: 'Едкие испарения' },
+        { id: 13, name: 'Ложись!' },
+        { id: 14, name: 'Слепящий порошок' },
+        { id: 15, name: 'Укрепляющие благовония' },
+        { id: 16, name: 'Бодрящие благовония' },
+        { id: 17, name: 'Защити меня' },
+      ],
+      campSkills: [{ id: 11, name: '' }],
+    },
+  ],
 };
 
 /*

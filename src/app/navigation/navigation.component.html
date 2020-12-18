@@ -1,8 +1,6 @@
 <mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #drawer class="sidenav" fixedInViewport
-      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-      [mode]="(isHandset$ | async) ? 'over' : 'side'"
-      [opened]="(isHandset$ | async) === false">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
     <mat-toolbar color="primary">Menu</mat-toolbar>
     <mat-nav-list>
       <a routerLinkActive="active" routerLink="heroes" mat-list-item href="#">Герои</a>
@@ -12,11 +10,7 @@
   </mat-sidenav>
   <mat-sidenav-content>
     <mat-toolbar color="primary">
-      <button
-        type="button"
-        aria-label="Toggle sidenav"
-        mat-icon-button
-        (click)="drawer.toggle()"
+      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"
         *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
@@ -24,6 +18,18 @@
       <!-- <span>Darkest Dungeon</span> -->
     </mat-toolbar>
     <!-- Add Content Here -->
-    <router-outlet></router-outlet>
+    <div class="layout">
+      <div class="w-100">
+        <router-outlet></router-outlet>
+      </div>
+      <mat-list role="list">
+        <mat-list-item *ngFor="let m of log.msg; let i = index">
+          <span style="white-space: nowrap;"> {{i + 1}}: {{m}} </span>
+        </mat-list-item>
+        <mat-list-item>
+          <button mat-button (click)="log.clear()">clear</button>
+        </mat-list-item>
+      </mat-list>
+    </div>
   </mat-sidenav-content>
 </mat-sidenav-container>

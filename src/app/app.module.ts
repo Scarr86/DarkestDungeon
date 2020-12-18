@@ -21,7 +21,9 @@ import { environment } from 'src/environments/environment';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HeroComponent } from './heroes/hero/hero.component';
+import { HeroesListComponent } from './heroes/heroes-list/heroes-list.component';
 
 @NgModule({
   declarations: [
@@ -31,12 +33,15 @@ import { FormsModule } from '@angular/forms';
     PartyComponent,
     DungeonComponent,
     NotfoundComponent,
+    HeroComponent,
+    HeroesListComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
+    ReactiveFormsModule,
     LayoutModule,
     MaterialModule,
     AngularFireModule.initializeApp(environment.firebase),
