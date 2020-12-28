@@ -23,6 +23,12 @@ $foreground: map-get($theme, foreground);
 html,
 body {
   height: 100%;
+  box-sizing: border-box;
+}
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
 }
 body {
   margin: 0;

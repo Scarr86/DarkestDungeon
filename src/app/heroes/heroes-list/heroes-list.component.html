@@ -1,5 +1,7 @@
-<div *ngFor="let hero of heroes; let i = index" class="hero" (click)="select(hero)">
-    <span>{{i+1}}</span>
-    <img class="hero-img" src="{{hero.img}}" alt="hero">
-    <span>{{hero.name}}</span>
+<div class="hero-list" [ngClass]="{'noname': isNoName}">
+    <div class="hero-item" *ngFor="let hero of heroes; let i = index" (click)="select(hero)">
+        <img class="hero-item__img" matTooltip="{{hero.name}}" matTooltipPosition="above"
+            src="assets/images/heroes/hero-{{hero.id}}.png" alt="hero">
+        <h3>{{hero.name}}</h3>
+    </div>
 </div>

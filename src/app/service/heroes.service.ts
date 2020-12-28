@@ -2,27 +2,30 @@ import { Injectable } from '@angular/core';
 import FireBase from './firebase';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { LogService } from './logger.service';
-
 export interface Hero {
-  key?: string;
+  id: number;
   name: string;
   wiki: string;
-  img: string;
-  campSkills: {
+  hasCommonCampSkills: boolean;
+  skillsHero: {
+    id: number;
     name: string;
-    img: string;
   }[];
-  heroSkills: {
+  skillsCamp: {
+    id: number;
     name: string;
-    img: string;
   }[];
+}
+export interface HeroList {
+  commonSkillsCamp: { id: number; name: string }[];
+  heroes: Hero[];
 }
 
 @Injectable({
   providedIn: 'root',
 })
 export class HeroesService extends FireBase<Hero> {
-  constructor(rtdb: AngularFireDatabase, log: LogService) {
-    super('heroes', rtdb, log);
-  }
+  // constructor(rtdb: AngularFireDatabase, log: LogService) {
+  //   super('heroes', rtdb, log);
+  // }
 }

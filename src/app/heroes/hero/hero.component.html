@@ -1,75 +1,37 @@
-<!-- <pre>
-{{heroForm.value | json}}
-</pre> -->
-
-
 <div class="hero">
-    <fieldset class="hero__fied">
-        <legend>Герой</legend>
-        <div class="hero__box">
-            <form class="hero__form" [formGroup]='heroForm'>
-                <mat-form-field>
-                    <input formControlName="name" matInput placeholder="Имя" />
-                </mat-form-field>
-                <mat-form-field>
-                    <input formControlName="img" matInput placeholder="Ссылка на картинку" />
-                </mat-form-field>
-                <mat-form-field>
-                    <input formControlName="wiki" matInput placeholder="Ссылка на wiki" />
-                </mat-form-field>
-            </form>
-            <div class="hero__img">
-                <img src="{{img}}" alt="hero">
-                <mat-chip-list>
-                    <mat-chip [disabled]='!wiki'>
-                        <a href="{{wiki}}" target="_blank">Wiki</a>
-                    </mat-chip>
-                </mat-chip-list>
-            </div>
-        </div>
-    </fieldset>
-
-    <fieldset class="hero__skills">
-        <legend>Навыки</legend>
-        <form [formGroup]='heroForm'>
-            <ng-container formArrayName="heroSkills">
-                <ng-container *ngFor="let skill of heroSkills.controls; let i = index; let isLast = last">
-                    <div class="hero__skills-box" [formGroupName]="i">
-                        <img src="{{skill.value['img']}}" alt="hero">
-                        <div class="hero__skills-input">
-                            <mat-form-field>
-                                <input formControlName="name" matInput placeholder="Имя" />
-                            </mat-form-field>
-                            <mat-form-field>
-                                <input formControlName="img" matInput placeholder="Ссылка на картинку" />
-                            </mat-form-field>
-                        </div>
-                    </div>
-                    <mat-divider *ngIf="!isLast"></mat-divider>
-                </ng-container>
-            </ng-container>
-        </form>
-    </fieldset>
-
-    <fieldset class="hero__skills">
-        <legend>Лагерные Навыки</legend>
-        <form [formGroup]='heroForm'>
-            <ng-container formArrayName="campSkills">
-                <ng-container *ngFor="let skill of campSkills.controls; let i = index; let isLast = last">
-                    <div class="hero__skills-box" [formGroupName]="i">
-                        <img src="{{skill.value['img']}}" alt="hero">
-                        <div class="hero__skills-input">
-                            <mat-form-field>
-                                <input formControlName="name" matInput placeholder="Имя" />
-                            </mat-form-field>
-                            <mat-form-field>
-                                <input formControlName="img" matInput placeholder="Ссылка на картинку" />
-                            </mat-form-field>
-                        </div>
-                    </div>
-                    <mat-divider *ngIf="!isLast"></mat-divider>
-                </ng-container>
-            </ng-container>
-        </form>
-    </fieldset>
+    <button class="hero__btn" mat-icon-button (click)="goback()">
+        <mat-icon>arrow_back_ios_new</mat-icon>
+    </button>
+    <div class="hero__title">
+        <h1 class="hero__name">{{hero.name}}</h1>
+        <mat-chip-list class="hero__wiki">
+            <mat-chip [disabled]='!hero.wiki'>
+                <a href="{{hero.wiki}}" target="_blank">Wiki</a>
+            </mat-chip>
+        </mat-chip-list>
+    </div>
+    <img class="hero__img" src="assets/images/heroes/hero-{{hero.id}}.png" alt="hero">
+</div>
+<div class="skills">
+    <mat-list>
+        <div mat-subheader>Боевые навыки</div>
+        <mat-list-item *ngFor="let skill of hero.skillsHero">
+            <img class="skills__img" matTooltip="{{skill.name}}" matTooltipPosition="left" src="assets/images/heroes/hero-skills-{{hero.id}}-{{skill.id}}.png" alt="hero">
+            <span>{{skill.name}}</span>
+        </mat-list-item>
+    </mat-list>
+    <mat-list>
+        <div mat-subheader>Лагерные навыки</div>
+        <ng-container *ngIf="hero.hasCommonCampSkills">
+            <mat-list-item *ngFor="let skill of commonCampSkills">
+                <img class="skills__img" matTooltip="{{skill.name}}" matTooltipPosition="left" src="assets/images/heroes/common-skills-camp-{{skill.id}}.png" alt="hero">
+                <span>{{skill.name}}</span>
+            </mat-list-item>
+        </ng-container>
+        <mat-list-item *ngFor="let skill of hero.skillsCamp">
+            <img class="skills__img" matTooltip="{{skill.name}}" matTooltipPosition="left" src="assets/images/heroes/hero-skills-camp-{{hero.id}}-{{skill.id}}.png"
+                alt="hero">
+            <span>{{skill.name}}</span>
+        </mat-list-item>
+    </mat-list>
 </div>
